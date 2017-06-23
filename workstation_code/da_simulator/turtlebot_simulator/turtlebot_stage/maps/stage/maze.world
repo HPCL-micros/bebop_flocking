@@ -1,0 +1,143 @@
+include "turtlebot.inc"
+
+define floorplan model
+(
+  # sombre, sensible, artistic
+  color "gray30"
+
+  # most maps will need a bounding box
+  boundary 1
+
+  gui_nose 0
+  gui_grid 0
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  laser_return 1
+)
+
+resolution 0.02
+interval_sim 100  # simulation timestep in milliseconds
+
+window
+(
+  size [ 600.0 700.0 ]
+  center [ 0.0 0.0 ]
+  rotate [ 0.0 0.0 ]
+  scale 60
+)
+
+floorplan
+(
+  name "maze"
+  bitmap "../maze.png"
+  size [ 400.0 400.0 2.0 ]
+  pose [  200.0  200.0 0.0 0.0 ]
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [ 100.0 80.0 0.0 0.0 ]
+  name "turtlebot"
+  color "red"
+)
+
+
+
+
+turtlebot
+(
+pose [ 77 34 0 0 ] 
+name "turtlebot1" 
+color "yellow")
+turtlebot
+(
+pose [ 55.2 41.5 0 0 ] 
+name "turtlebot2" 
+color "red")
+turtlebot
+(
+pose [ 87.5 93.2 0 0 ] 
+name "turtlebot3" 
+color "green")
+turtlebot
+(
+pose [ 41 58.2 0 0 ] 
+name "turtlebot4" 
+color "blue")
+turtlebot
+(
+pose [ 86 69 0 0 ] 
+name "turtlebot5" 
+color "yellow")
+turtlebot
+(
+pose [ 39.3 55.3 0 0 ] 
+name "turtlebot6" 
+color "red")
+turtlebot
+(
+pose [ 47.4 86.8 0 0 ] 
+name "turtlebot7" 
+color "green")
+turtlebot
+(
+pose [ 73.5 96.9 0 0 ] 
+name "turtlebot8" 
+color "blue")
+turtlebot
+(
+pose [ 52.9 51.5 0 0 ] 
+name "turtlebot9" 
+color "yellow")
+turtlebot
+(
+pose [ 67.7 71.4 0 0 ] 
+name "turtlebot10" 
+color "red")
+turtlebot
+(
+pose [ 26.6 102.8 0 0 ] 
+name "turtlebot11" 
+color "green")
+turtlebot
+(
+pose [ 82.7 54.3 0 0 ] 
+name "turtlebot12" 
+color "blue")
+turtlebot
+(
+pose [ 54.6 107.2 0 0 ] 
+name "turtlebot13" 
+color "yellow")
+turtlebot
+(
+pose [ 50.4 53.4 0 0 ] 
+name "turtlebot14" 
+color "red")
+turtlebot
+(
+pose [ 40.4 115 0 0 ] 
+name "turtlebot15" 
+color "green")
+turtlebot
+(
+pose [ 83.5 87.5 0 0 ] 
+name "turtlebot16" 
+color "blue")
+turtlebot
+(
+pose [ 74.3 108.7 0 0 ] 
+name "turtlebot17" 
+color "yellow")
+turtlebot
+(
+pose [ 24.2 61.8 0 0 ] 
+name "turtlebot18" 
+color "red")
+turtlebot
+(
+pose [ 77.2 55.2 0 0 ] 
+name "turtlebot19" 
+color "green")

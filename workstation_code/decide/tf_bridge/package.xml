@@ -1,0 +1,28 @@
+<package>
+    <name>tf_bridge</name>
+    <version>0.0.1</version>
+    <description>
+        This package provides bridge interfaces for tf.
+    </description>
+    
+    <author>Xuefeng Chang</author>
+    <maintainer email="changxuefengcn@163.com">Xuefeng Chang</maintainer>
+    <license>BSD</license>
+    <url>http://wiki.ros.org/</url>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <build_depend>std_msgs</build_depend>
+    <build_depend>geometry_msgs</build_depend>
+    <build_depend>decide_softbus_msgs</build_depend>
+    <build_depend>costmap_2d</build_depend>
+    <build_depend>tf</build_depend>
+
+    <run_depend>std_msgs</run_depend>
+    <run_depend>geometry_msgs</run_depend>
+    <run_depend>decide_softbus_msgs</run_depend>
+    <run_depend>costmap_2d</run_depend>
+    <run_depend>tf</run_depend>
+</package>
+
+

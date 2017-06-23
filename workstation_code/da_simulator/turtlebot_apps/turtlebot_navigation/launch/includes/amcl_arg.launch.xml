@@ -1,0 +1,22 @@
+<!-- xml -->
+<launch>
+    <arg name="robot_name"/>
+    <arg name="initial_pose_x"/>
+    <arg name="initial_pose_y"/>
+    <arg name="initial_pose_a"/>
+    <arg name="use_map_topic"/>
+    <arg name="scan_topic"/>
+    
+    <group ns="$(arg robot_name)">
+    <param name="tf_prefix" value="$(arg robot_name)" />
+    <include file="$(find turtlebot_navigation)/launch/includes/amcl.launch.xml">
+      <arg name="use_map_topic"    value="$(arg use_map_topic)"/>
+      <arg name="odom_frame_id"   value="$(arg robot_name)/odom"/>
+      <arg name="base_frame_id"   value="$(arg robot_name)/base_footprint"/>
+      <arg name="scan_topic" value="$(arg scan_topic)"/>
+      <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+      <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+      <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+    </include>
+    </group>  
+</launch>

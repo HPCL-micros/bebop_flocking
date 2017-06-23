@@ -1,0 +1,118 @@
+<launch>
+  <machine name="pi0" address="192.168.21.100" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh" default="true"/>
+  <machine name="pi1" address="192.168.21.101" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/> 
+  <machine name="pi2" address="192.168.21.102" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/> 
+  <machine name="pi3" address="192.168.21.103" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/>
+  <machine name="pi4" address="192.168.21.104" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/>
+  <machine name="pi5" address="192.168.21.105" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/>
+  <machine name="pi6" address="192.168.21.106" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/>
+  <machine name="pi7" address="192.168.21.107" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/>
+  <machine name="pi8" address="192.168.21.108" user="pi" password="pi" env-loader="/home/pi/catkin_ws/env.sh"/>
+
+  <arg name="odom_frame_id"   default="odom"/>
+  <arg name="base_frame_id"   default="base_link"/>
+  <arg name="global_frame_id" default="/map"/>
+  <arg name="odom_topic" default="odom" />
+  <arg name="laser_topic" default="scan" />
+  <arg name="custom_param_file" default="$(find turtlebot_navigation)/param/dummy.yaml"/>
+
+  <!--  **************Swarm Navigation  ***************  -->
+  <group ns="uav0">
+    <param name="tf_prefix" value="uav0" />
+    <node machine="pi0" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav0/odom"/>
+      <param name="base_frame_id" value="/uav0/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav1">
+    <param name="tf_prefix" value="uav1" />
+    <node machine="pi1" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav1/odom"/>
+      <param name="base_frame_id" value="/uav1/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav2">
+    <param name="tf_prefix" value="uav2" />
+    <node machine="pi2" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav2/odom"/>
+      <param name="base_frame_id" value="/uav2/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav3">
+    <param name="tf_prefix" value="uav3" />
+    <node machine="pi3" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav3/odom"/>
+      <param name="base_frame_id" value="/uav3/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav4">
+    <param name="tf_prefix" value="uav4" />
+    <node machine="pi4" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav4/odom"/>
+      <param name="base_frame_id" value="/uav4/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav5">
+    <param name="tf_prefix" value="uav5" />
+    <node machine="pi5" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav5/odom"/>
+      <param name="base_frame_id" value="/uav5/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav6">
+    <param name="tf_prefix" value="uav6" />
+    <node machine="pi6" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav6/odom"/>
+      <param name="base_frame_id" value="/uav6/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav7">
+    <param name="tf_prefix" value="uav7" />
+    <node machine="pi7" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav7/odom"/>
+      <param name="base_frame_id" value="/uav7/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+  
+  <group ns="uav8">
+    <param name="tf_prefix" value="uav8" />
+    <node machine="pi8" pkg="action_softbus" type="action_softbus_node" name="action_softbus_node0" output="screen">
+      <param name="action_plugin_name" value="action_softbus/BebopAction"/>
+      <param name="odom_frame_id" value="/uav8/odom"/>
+      <param name="base_frame_id" value="/uav8/base_link"/>
+      <param name="global_frame_id" value="/map"/>
+      <remap from="cmd_vel" to="velctrl/input" />
+    </node>
+  </group>
+</launch>

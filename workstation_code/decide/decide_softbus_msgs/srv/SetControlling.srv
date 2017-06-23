@@ -1,0 +1,7 @@
+# set the CONTROLLING state in move_base
+# 0:  not step into controlling state
+# 1:  step into controlling state
+int32 CONTROLLING
+---
+# response
+int32 feedback

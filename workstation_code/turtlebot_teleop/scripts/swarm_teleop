@@ -1,0 +1,283 @@
+#!/usr/bin/env python
+
+# Copyright (c) 2011, Willow Garage, Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+#    * Redistributions of source code must retain the above copyright
+#      notice, this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright
+#      notice, this list of conditions and the following disclaimer in the
+#      documentation and/or other materials provided with the distribution.
+#    * Neither the name of the Willow Garage, Inc. nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#       this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+
+import rospy
+
+from geometry_msgs.msg import Twist
+from std_msgs.msg import Empty
+from std_msgs.msg import Int32
+
+import sys, select, termios, tty
+
+msg = """
+Control Your Turtlebot!
+---------------------------
+Moving around:
+   u    i    o
+   j    k    l
+   m    ,    .
+
+q/z : increase/decrease max speeds by 10%
+w/x : increase/decrease only linear speed by 10%
+e/c : increase/decrease only angular speed by 10%
+space key, k : force stop
+anything else : stop smoothly
+
+CTRL-C to quit
+v,b:takeoff,land,
+reset will usually damage the UAVs : n + m(in 1s after n)
+"""
+
+moveBindings = {
+        'i':(1,0),
+        'o':(1,-1),
+        'j':(0,1),
+        'l':(0,-1),
+        'u':(1,1),
+        ',':(-1,0),
+        '.':(-1,1),
+        'm':(-1,-1),
+           }
+
+speedBindings={
+        'q':(1.1,1.1),
+        'z':(.9,.9),
+        'w':(1.1,1),
+        'x':(.9,1),
+        'e':(1,1.1),
+        'c':(1,.9),
+          }
+
+def getKey():
+    tty.setraw(sys.stdin.fileno())
+    rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
+    if rlist:
+        key = sys.stdin.read(1)
+    else:
+        key = ''
+
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+    return key
+
+def getKeySlow():
+    tty.setraw(sys.stdin.fileno())
+    rlist, _, _ = select.select([sys.stdin], [], [], 1.1)
+    if rlist:
+        key = sys.stdin.read(1)
+    else:
+        key = ''
+
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+    return key
+
+speed = .2
+turn = 1
+
+def vels(speed,turn):
+    return "currently:\tspeed %s\tturn %s " % (speed,turn)
+
+if __name__=="__main__":
+    settings = termios.tcgetattr(sys.stdin)
+    eptmsg=Empty()
+    rospy.init_node('turtlebot_teleop')
+    pub = rospy.Publisher('/uav0/cmd_vel', Twist, queue_size=5)
+    takeoffpub = rospy.Publisher('/uav0/takeoff',Empty,queue_size=5)
+    landpub = rospy.Publisher('/uav0/land',Empty,queue_size=5)
+    emergencypub = rospy.Publisher('/uav0/reset',Empty,queue_size=5)
+    
+    takeoffpub1 = rospy.Publisher('/uav1/takeoff',Empty,queue_size=5)
+    landpub1 = rospy.Publisher('/uav1/land',Empty,queue_size=5)
+    emergencypub1 = rospy.Publisher('/uav1/reset',Empty,queue_size=5)
+    pub1 = rospy.Publisher('/uav1/cmd_vel', Twist, queue_size=5)
+    
+    takeoffpub2 = rospy.Publisher('/uav2/takeoff',Empty,queue_size=5)
+    landpub2 = rospy.Publisher('/uav2/land',Empty,queue_size=5)
+    emergencypub2 = rospy.Publisher('/uav2/reset',Empty,queue_size=5)
+    pub2 = rospy.Publisher('/uav2/cmd_vel', Twist, queue_size=5)
+    
+    takeoffpub3 = rospy.Publisher('/uav3/takeoff',Empty,queue_size=5)
+    landpub3 = rospy.Publisher('/uav3/land',Empty,queue_size=5)
+    emergencypub3 = rospy.Publisher('/uav3/reset',Empty,queue_size=5)
+    pub3 = rospy.Publisher('/uav3/cmd_vel', Twist, queue_size=5)
+    
+    takeoffpub4 = rospy.Publisher('/uav4/takeoff',Empty,queue_size=5)
+    landpub4 = rospy.Publisher('/uav4/land',Empty,queue_size=5)
+    emergencypub4 = rospy.Publisher('/uav4/reset',Empty,queue_size=5)
+    pub4 = rospy.Publisher('/uav4/cmd_vel', Twist, queue_size=5)
+    
+    takeoffpub5 = rospy.Publisher('/uav5/takeoff',Empty,queue_size=5)
+    landpub5 = rospy.Publisher('/uav5/land',Empty,queue_size=5)
+    emergencypub5 = rospy.Publisher('/uav5/reset',Empty,queue_size=5)
+    pub5 = rospy.Publisher('/uav5/cmd_vel', Twist, queue_size=5)
+    
+    takeoffpub6 = rospy.Publisher('/uav6/takeoff',Empty,queue_size=5)
+    landpub6 = rospy.Publisher('/uav6/land',Empty,queue_size=5)
+    emergencypub6 = rospy.Publisher('/uav6/reset',Empty,queue_size=5)
+    pub6 = rospy.Publisher('/uav6/cmd_vel', Twist, queue_size=5)
+    
+    takeoffpub7 = rospy.Publisher('/uav7/takeoff',Empty,queue_size=5)
+    landpub7 = rospy.Publisher('/uav7/land',Empty,queue_size=5)
+    emergencypub7 = rospy.Publisher('/uav7/reset',Empty,queue_size=5)
+    pub7 = rospy.Publisher('/uav7/cmd_vel', Twist, queue_size=5)
+    
+    takeoffpub8 = rospy.Publisher('/uav8/takeoff',Empty,queue_size=5)
+    landpub8 = rospy.Publisher('/uav8/land',Empty,queue_size=5)
+    emergencypub8 = rospy.Publisher('/uav8/reset',Empty,queue_size=5)
+    pub8 = rospy.Publisher('/uav8/cmd_vel', Twist, queue_size=5)
+    
+    stoppub = rospy.Publisher('/stop', Int32, queue_size=5)
+    stopmsg = Int32()
+    x = 0
+    th = 0
+    status = 0
+    count = 0
+    acc = 0.1
+    target_speed = 0
+    target_turn = 0
+    control_speed = 0
+    control_turn = 0
+    last_zero = False
+    try:
+        print msg
+        print vels(speed,turn)
+        while(1):
+            key = getKey()
+            if key == 'v':
+                takeoffpub.publish(eptmsg)
+                takeoffpub1.publish(eptmsg)
+                takeoffpub2.publish(eptmsg)
+                takeoffpub3.publish(eptmsg)
+                takeoffpub4.publish(eptmsg)
+                takeoffpub5.publish(eptmsg)
+                takeoffpub6.publish(eptmsg)
+                takeoffpub7.publish(eptmsg)
+                takeoffpub8.publish(eptmsg)
+            elif key == 'b':
+                landpub.publish(eptmsg)
+                landpub1.publish(eptmsg)
+                landpub2.publish(eptmsg)
+                landpub3.publish(eptmsg)
+                landpub4.publish(eptmsg)
+                landpub5.publish(eptmsg)
+                landpub6.publish(eptmsg)
+                landpub7.publish(eptmsg)
+                landpub8.publish(eptmsg)
+                
+            elif key == 'n':
+                key2 = getKeySlow()
+                if key2 == 'm':
+                    emergencypub.publish(eptmsg);
+                    emergencypub1.publish(eptmsg);
+                    emergencypub2.publish(eptmsg);
+                    emergencypub3.publish(eptmsg);
+                    emergencypub4.publish(eptmsg);
+                    emergencypub5.publish(eptmsg);
+                    emergencypub6.publish(eptmsg);
+                    emergencypub7.publish(eptmsg);
+                    emergencypub8.publish(eptmsg);
+            elif key == 'g':
+                stoppub.publish(stopmsg)
+            if key in moveBindings.keys():
+                x = moveBindings[key][0]
+                th = moveBindings[key][1]
+                count = 0
+            elif key in speedBindings.keys():
+                speed = speed * speedBindings[key][0]
+                turn = turn * speedBindings[key][1]
+                count = 0
+
+                print vels(speed,turn)
+                if (status == 14):
+                    print msg
+                status = (status + 1) % 15
+            elif key == ' ' or key == 'k' :
+                x = 0
+                th = 0
+                control_speed = 0
+                control_turn = 0
+            else:
+                count = count + 1
+                if count > 4:
+                    x = 0
+                    th = 0
+                if (key == '\x03'):
+                    break
+
+            target_speed = speed * x
+            target_turn = turn * th
+
+            if target_speed > control_speed:
+                control_speed = min( target_speed, control_speed + 0.02 )
+            elif target_speed < control_speed:
+                control_speed = max( target_speed, control_speed - 0.02 )
+            else:
+                control_speed = target_speed
+
+            if target_turn > control_turn:
+                control_turn = min( target_turn, control_turn + 0.1 )
+            elif target_turn < control_turn:
+                control_turn = max( target_turn, control_turn - 0.1 )
+            else:
+                control_turn = target_turn
+
+            twist = Twist()
+            twist.linear.x = control_speed; twist.linear.y = 0; twist.linear.z = 0
+            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = control_turn
+            if control_speed == 0 and control_turn == 0:
+                if last_zero == True:
+                    continue
+                else:
+                    last_zero = True
+            else:
+                last_zero = False
+            pub.publish(twist)
+            pub1.publish(twist)
+            pub2.publish(twist)
+            pub3.publish(twist)
+            pub4.publish(twist)
+            pub5.publish(twist)
+            pub6.publish(twist)
+            pub7.publish(twist)
+            pub8.publish(twist)
+            #print("loop: {0}".format(count))
+            #print("target: vx: {0}, wz: {1}".format(target_speed, target_turn))
+            #print("publihsed: vx: {0}, wz: {1}".format(twist.linear.x, twist.angular.z))
+
+    except:
+        print e
+
+    finally:
+        twist = Twist()
+        twist.linear.x = 0; twist.linear.y = 0; twist.linear.z = 0
+        twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+        pub.publish(twist)
+        pub1.publish(twist)
+
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+

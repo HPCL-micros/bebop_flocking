@@ -1,0 +1,13 @@
+# Get a plan from the current position to the goal Pose 
+
+# The start pose for the plan
+decide_softbus_msgs/NavigationPoint start
+
+# The final pose of the goal position
+decide_softbus_msgs/NavigationPoint goal
+
+# If the goal is obstructed, how many meters the planner can 
+# relax the constraint in x and y before failing. 
+float32 tolerance
+---
+decide_softbus_msgs/Path plan
