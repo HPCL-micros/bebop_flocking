@@ -1,0 +1,15 @@
+
+<launch>
+    <group ns="bebop">
+    <node pkg="flight_barrier" type="flight_barrier_node" name="flight_barrier_node" output="screen">
+        <param name="robot_name" type="string" value="uav0"/>
+        <param name="x_limit" type="double" value="10.0"/>
+        <param name="y_limit" type="double" value="10.0"/>
+        <param name="z_limit" type="double" value="4.0"/>
+
+        <param name="x_vel_limit" type="double" value="1.0"/>
+        <param name="y_vel_limit" type="double" value="1.0"/>
+        <param name="z_vel_limit" type="double" value="1.0"/>
+    </node>
+    </group>
+</launch>

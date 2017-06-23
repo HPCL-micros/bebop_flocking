@@ -1,0 +1,27 @@
+<!-- xml -->
+<launch>
+<!--
+  <node name="hector_sim_manager" pkg="quadrotor_code" type="hector_sim_manager" output="screen">
+  <param name='robotnum' value='3'/>
+  </node>
+-->
+  <group ns='uav0'>
+  <node name="fix_alpha" pkg="quadrotor_code" type="fixalpha" output="screen">
+  <remap from="cmd_vel" to="velctrl/input" />
+  </node>
+  </group>
+  
+  <group ns='uav1'>
+  <node name="fix_alpha" pkg="quadrotor_code" type="fixalpha" output="screen">
+      <remap from="cmd_vel" to="velctrl/input" />
+  </node>
+   </group>
+   
+   <group ns='uav2'>
+  <node name="fix_alpha" pkg="quadrotor_code" type="fixalpha" output="screen">
+      <remap from="cmd_vel" to="velctrl/input" />
+  </node>
+   </group>
+   
+  
+</launch>

@@ -1,0 +1,28 @@
+<package>
+  <name>decide_softbus_msgs</name>
+  <version>0.0.1</version>
+  <description>
+    pre_planning_msgs provides messages for swarm robotics pre-planning.
+  </description>
+  <maintainer email="tfoote@osrfoundation.org">Tully Foote</maintainer>
+  <license>BSD</license>
+
+  <url>http://wiki.ros.org/geometry_msgs</url>
+  <author>Tully Foote</author>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+  <build_depend>actionlib_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+
+  <run_depend>message_runtime</run_depend>
+  <run_depend>actionlib_msgs</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+
+  <export>
+    <architecture_independent/>
+  </export>
+</package>

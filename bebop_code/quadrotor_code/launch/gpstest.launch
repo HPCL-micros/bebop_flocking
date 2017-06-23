@@ -1,0 +1,9 @@
+<!-- xml -->
+<launch>
+
+  <group ns='uav0'>
+  <node name="gpstest" pkg="quadrotor_code" type="gpstest" output="screen">
+  </node>
+  </group>
+  
+</launch>

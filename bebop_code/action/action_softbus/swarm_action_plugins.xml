@@ -1,0 +1,12 @@
+
+<library path="lib/libdemo_action">
+    <class name="action_softbus/DemoAction" type="action_softbus::DemoAction" base_class_type="action_softbus::ActionCore">
+        <description>a demo for action plugins.</description>
+    </class>
+</library>
+
+<library path="lib/libbebop_action">
+    <class name="action_softbus/BebopAction" type="action_softbus::BebopAction" base_class_type="action_softbus::ActionCore">
+        <description>bebop action plugin.</description>
+    </class>
+</library>

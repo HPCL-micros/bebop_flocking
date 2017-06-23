@@ -1,0 +1,21 @@
+<launch>
+  <node name="bebop_manager" pkg="quadrotor_code" type="bebop_manager" output="screen">
+    <param name='robotnum' value='3'/>
+    <param name='uav0_x' value='0'/>  <param name='uav0_y' value='0'/>
+    <param name='uav1_x' value='0'/>  <param name='uav1_y' value='-3'/>
+    <param name='uav2_x' value='0'/>  <param name='uav2_y' value='-6'/>
+    
+  </node>
+  
+  <!-- Name of the map to use (without path nor extension) and initial position -->
+  <!--arg name="map_file"       default=" $(env TURTLEBOT_STAGE_MAP_FILE)"/--> <!-- robopark_plan -->
+  <arg name="map_file"       default="$(find turtlebot_stage)/maps/maze.yaml"/> <!-- robopark_plan -->
+  <!--arg name="world_file"     default=" $(env TURTLEBOT_STAGE_WORLD_FILE)"/-->
+  <arg name="world_file"     default="$(find turtlebot_stage)/maps/stage/maze.world"/>
+  <!--  ****** Maps *****  -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="/map"/>
+  </node>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find quadrotor_code)/rviz/bebop_swarm_navigation.rviz"/>
+</launch>

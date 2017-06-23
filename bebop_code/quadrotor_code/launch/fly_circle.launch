@@ -1,0 +1,8 @@
+<!-- xml -->
+<launch>
+
+  <group ns='bebop'>
+  <node name="fly_circle" pkg="quadrotor_code" type="fly_circle" output="screen">
+  </node>
+  </group>
+</launch>

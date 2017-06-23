@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="nodelet" type="nodelet" name="action_softbus_manager"  args="manager" output="screen"/>
+
+    <node pkg="nodelet" type="nodelet" name="action_softbus" args="load action_softbus/ActionSoftbus action_softbus_manager" output="screen">
+        <!--remap from="chatter" to="hello"/-->
+    </node>
+
+</launch>

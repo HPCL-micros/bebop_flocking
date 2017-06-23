@@ -1,0 +1,20 @@
+<package>
+    <name>action</name>
+    <version>0.0.1</version>
+    <description>
+        action package.
+    </description>
+    <maintainer email="changxuefengcn@163.com">Xuefeng Chang</maintainer>
+    <author>changxuefengcn@163.com</author>
+    <license>BSD</license>  
+    <url>http://wiki.ros.org/</url>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>action_softbus</run_depend>
+    <run_depend>micros_flocking</run_depend>
+
+    <export>
+        <metapackage/>
+    </export>
+</package>

@@ -1,0 +1,19 @@
+<!-- xml -->
+<launch>
+
+  <group ns='uav0'>
+  <node name="hector_reset" pkg="quadrotor_code" type="hector_reset" output="screen">
+  </node>
+  </group>
+  
+  <group ns='uav1'>
+  <node name="hector_reset" pkg="quadrotor_code" type="hector_reset" output="screen">
+  </node>
+   </group>
+   
+  <group ns='uav2'>
+  <node name="hector_reset" pkg="quadrotor_code" type="hector_reset" output="screen">
+  </node>
+   </group>
+  
+</launch>

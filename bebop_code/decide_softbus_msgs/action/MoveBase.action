@@ -1,0 +1,4 @@
+decide_softbus_msgs/NavigationPoint target_pose
+---
+---
+decide_softbus_msgs/NavigationPoint base_position
