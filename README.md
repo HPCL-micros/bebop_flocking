@@ -18,7 +18,7 @@ In our flocking case, the desired distance between neighboring drones is set to 
 Since each drone utilizes its own odom frame of which the origin is its initial position, we have to mannually relate thier odom frames, namely, `/uav0/odom`，`/uav1/odom` etc., to the world frame`/map`. These tf messages are static and published by `bebop_manger` on the workstation. The initial position of each drone should be set in the roslaunch file `bebop_manager.launch` in order to relate these odom frames.
 
 ## Installation
-Download `workstation_code` to the workstation and `bebop_code` to all Raspberry PIs. Use `catkin_make` to compile these ROS packages. It may take a bit long time. Please wait until finished and remember to `source` your workspace for each terminal. \
+Download `workstation_code` to the workstation and `bebop_code` to all Raspberry PIs. Use `catkin_make` to compile these ROS packages. It may take a bit long time. Please wait until finished and remember to `source` your workspace for each terminal. 
 * It is strongly recommanded that for Raspberry PIs, use our SD card image directly rather than `bebop_code`. Please refer to the `ReadMe.md` in `bebop_code`. Otherwise some dependency issue would occur, which could be solved by `sudo apt-get install ros-kinetic-xxx` and installing `lame`.
 * If other depedency issues occur, they can usually be fixed by `sudo apt-get install ros-kinetic-xxx`. We tried to set ROS message dependencis correctly, but if some errors occur, you can `catkin_make` the packages defining these messages first and then `catkin_make` other pacakges. 
 
